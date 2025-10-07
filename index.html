@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Todo List - Kanban</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Todo List</h1>
+    <p>Drag cards between columns. Tasks persist in your browser (localStorage).</p>
+    <div id="syncStatus" title="sync status">● Offline</div>
+  </header>
+
+  <main>
+    <section class="add-card">
+      <form id="addForm">
+        <input id="title" type="text" placeholder="Task title" required />
+        <select id="columnSelect">
+          <option value="backlog">Backlog</option>
+          <option value="not-started">Not Started</option>
+          <option value="in-progress">In Progress</option>
+          <option value="done">Done</option>
+        </select>
+        <button type="submit">Add Card</button>
+      </form>
+    </section>
+
+    <section class="board" id="board">
+      <div class="column" data-column="backlog">
+        <h2>Backlog</h2>
+        <div class="list" id="backlog"></div>
+      </div>
+
+      <div class="column" data-column="not-started">
+        <h2>Not Started</h2>
+        <div class="list" id="not-started"></div>
+      </div>
+
+      <div class="column" data-column="in-progress">
+        <h2>In Progress</h2>
+        <div class="list" id="in-progress"></div>
+      </div>
+
+      <div class="column" data-column="done">
+        <h2>Done</h2>
+        <div class="list" id="done"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+/* Simple responsive Kanban-style board */
+:root{
+  --bg:#0f1724;
+  --card:#0b1220;
+  --muted:#9aa4b2;
+  --accent:#4f46e5;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;background:linear-gradient(180deg,#071028 0%, #0f1724 100%);color:#e6eef8}
+header{padding:20px 24px;border-bottom:1px solid rgba(255,255,255,0.03)}
+header h1{margin:0;font-size:20px}
+header p{margin:6px 0 0;color:var(--muted);font-size:13px}
+#syncStatus{display:inline-block;margin-left:12px;padding:6px 10px;border-radius:999px;font-size:12px;background:rgba(255,255,255,0.02);color:var(--muted);border:1px solid rgba(255,255,255,0.03)}
+#syncStatus.online{color:#bfe6a8;border-color:rgba(191,230,168,0.15);background:linear-gradient(180deg,rgba(191,230,168,0.06),transparent)}
+#syncStatus.syncing{color:#ffd59e;border-color:rgba(255,213,158,0.15);background:linear-gradient(180deg,rgba(255,213,158,0.04),transparent)}
+main{padding:18px}
+.add-card{margin-bottom:14px}
+#addForm{display:flex;gap:8px;align-items:center}
+#addForm input, #addForm select{padding:10px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:rgba(255,255,255,0.02);color:inherit;outline:none}
+#addForm button{padding:10px 14px;border-radius:8px;background:var(--accent);border:none;color:white;cursor:pointer}
+.board{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.column{background:rgba(255,255,255,0.02);padding:12px;border-radius:10px;min-height:260px;display:flex;flex-direction:column}
+.column h2{margin:0 0 10px 0;font-size:14px}
+.list{flex:1;display:flex;flex-direction:column;gap:10px}
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);cursor:grab;display:flex;justify-content:space-between;align-items:flex-start}
+.card.dragging{opacity:0.5}
+.card .meta{display:flex;flex-direction:column;gap:6px}
+.card .title{font-weight:600}
+.card .actions{display:flex;gap:6px}
+.card button{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted);padding:6px 8px;border-radius:6px;cursor:pointer}
+.list.drag-over{outline:3px dashed rgba(79,70,229,0.7);outline-offset:6px}
+@media (max-width:900px){
+  .board{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:520px){
+  #addForm{flex-direction:column;align-items:stretch}
+  .board{grid-template-columns:1fr}
+}
